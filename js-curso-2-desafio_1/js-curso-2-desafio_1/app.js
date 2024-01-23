@@ -17,6 +17,6 @@ function btnPrompt(){
 function btnSoma(){
     let primeiroNumero = prompt(`Informe o primeiro valor da Somar`);
     let segundoNumero = prompt(`Informe o segundo valor da Somar`);
-    let soma = primeiroNumero + segundoNumero;
+    let soma = parseInt(primeiroNumero) + parseInt(segundoNumero);
     alert(`A soma ${primeiroNumero} + ${segundoNumero} = ${soma}`);
 }
