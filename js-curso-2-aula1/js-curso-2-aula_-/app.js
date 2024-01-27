@@ -17,8 +17,13 @@ function generateRandomNumber(){
 
 function checkAttempt(){
     Attempt = document.querySelector('input').value;
-    result = Attempt == secretNumber ? `Congratulations !! You guessed the secret number
-    ` : `Try again you didn't get the secret number right`
+    if (Attempt == secretNumber) {
+        showOnScreen(`h1`,`Congratulations !! You guessed the secret number`);
+        showOnScreen(`p`,`You find the secret number`);
+    } else {
+        showOnScreen(`h1`,`Try again, you didn't get the secret number right`);
+        showOnScreen(`p`,`You didn't get the secret number, try again`);
+    }
     console.log(`Value of Attempt: ${Attempt}`);
     console.log(Attempt == secretNumber ? `Congratulations !! You guessed the secret number
     ` : `Try again you didn't get the secret number right`);
