@@ -21,11 +21,12 @@ function checkAttempt(){
         showOnScreen(`h1`,`Congratulations !! You guessed the secret number`);
         showOnScreen(`p`,`You find the secret number`);
     } else {
-        showOnScreen(`h1`,`Try again, you didn't get the secret number right`);
-        showOnScreen(`p`,`You didn't get the secret number, try again`);
+        if(Attempt > secretNumber){
+            showOnScreen(`p`,`The secret number is smaller`);
+        } else {
+            showOnScreen(`p`,`The secret number is bigger`);
+        };
     }
-    console.log(`Value of Attempt: ${Attempt}`);
-    console.log(Attempt == secretNumber ? `Congratulations !! You guessed the secret number
-    ` : `Try again you didn't get the secret number right`);
+
 }
 
