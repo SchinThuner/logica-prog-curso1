@@ -1,10 +1,14 @@
 let limitNumber = 10;
-let Attempt = '';
+let attempt = 1;
+let wordAttempt = 'attempt'
+let assort = ''
 let secretNumber = generateRandomNumber();
 console.log(secretNumber);
 
-showOnScreen(`h1`,`Secret number game`);
-showOnScreen(`p`,`Choose a number from 1 to ${limitNumber}`);
+function showMessageStart() {
+    showOnScreen(`h1`,`Secret number game`);
+    showOnScreen(`p`,`Choose a number from 1 to ${limitNumber}`);   
+}
 
 function showOnScreen(tag,text) {
     let fieldText = document.querySelector(tag);
@@ -15,18 +19,36 @@ function generateRandomNumber(){
     return parseInt(Math.random() * limitNumber + 1);
 }
 
-function checkAttempt(){
-    Attempt = document.querySelector('input').value;
-    if (Attempt == secretNumber) {
+function checkAssort(){
+    assort = document.querySelector('input').value;
+    if (assort == secretNumber) {
+        document.getElementById('reiniciar').removeAttribute('disabled');
         showOnScreen(`h1`,`Congratulations !! You guessed the secret number`);
-        showOnScreen(`p`,`You find the secret number`);
+        showOnScreen(`p`,`You found the secret number in ${attempt} ${wordAttempt}`);
     } else {
-        if(Attempt > secretNumber){
+        wordAttempt = `attempts`;
+        attempt++;
+        if(assort > secretNumber){
             showOnScreen(`p`,`The secret number is smaller`);
         } else {
             showOnScreen(`p`,`The secret number is bigger`);
         };
+        cleanField();
     }
-
 }
 
+function cleanField() {
+    assort = document.querySelector('input');
+    assort.value = '';
+}
+
+function newGame(){
+    document.getElementById('reiniciar').setAttribute('disabled',true);
+    secretNumber = generateRandomNumber();
+    cleanField();
+    attempt = 1;
+    wordAttempt = `attempt`;
+    showMessageStart();
+}
+
+showMessageStart();
