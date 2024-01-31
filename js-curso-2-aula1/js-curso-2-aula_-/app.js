@@ -14,6 +14,7 @@ function showMessageStart() {
 function showOnScreen(tag,text) {
     let fieldText = document.querySelector(tag);
     fieldText.innerHTML = `${text}`;
+    responsiveVoice.speak(text, 'Brazilian Portuguese Female', {rate: 1.2});
 }
 
 function generateRandomNumber(){
