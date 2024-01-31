@@ -1,3 +1,4 @@
+let listNumbersSorted = [];
 let limitNumber = 10;
 let attempt = 1;
 let wordAttempt = 'attempt'
@@ -16,7 +17,17 @@ function showOnScreen(tag,text) {
 }
 
 function generateRandomNumber(){
-    return parseInt(Math.random() * limitNumber + 1);
+    let drawnNumber = parseInt(Math.random() * limitNumber + 1);
+    let quantityOfElementsInList = listNumbersSorted.length;
+    console.log(listNumbersSorted);
+    limitNumber == quantityOfElementsInList ? listNumbersSorted = [] : null;
+    if (listNumbersSorted.includes(drawnNumber)) {
+        console.log(listNumbersSorted);
+        return generateRandomNumber();
+    } else {
+        listNumbersSorted.push(drawnNumber);
+        return drawnNumber;
+    }
 }
 
 function checkAssort(){
